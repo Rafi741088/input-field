@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Todo List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <h1 class="app-title">My Todo List</h1>
+
+    <div class="task-form">
+      <label for="task-input" class="visually-hidden">New task</label>
+      <input
+        type="text"
+        id="task-input"
+        class="task-input"
+        placeholder="Enter a new task..."
+        autocomplete="off"
+        autofocus
+      >
+      <button type="button" id="add-btn" class="btn btn-add">Add Task</button>
+    </div>
+
+    <p id="error-message" class="error-message" role="alert" hidden>
+      Please enter a task before adding it.
+    </p>
+
+    <p id="task-count" class="task-count" aria-live="polite">Total tasks: 0</p>
+
+    <ul id="task-list" class="task-list"></ul>
+
+    <p id="empty-state" class="empty-state">
+      Nothing to do yet. Add your first task above.
+    </p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

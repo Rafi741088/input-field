@@ -1,0 +1,237 @@
+/* ---------- Base (mobile-first) ---------- */
+:root {
+  --bg: #eef2f7;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #5b6575;
+  --border: #d5dbe5;
+  --primary: #2457c5;
+  --primary-hover: #1b459e;
+  --danger: #b42318;
+  --danger-hover: #8f1c12;
+  --danger-bg: #fdecea;
+  --radius: 12px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  max-width: 100%;
+  overflow-x: hidden; /* no horizontal scrolling */
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* ---------- Card ---------- */
+.app {
+  width: 100%;
+  max-width: 520px;
+  margin-top: 24px;
+  padding: 20px;
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(15, 23, 42, 0.05), 0 12px 32px rgba(15, 23, 42, 0.08);
+}
+
+.app-title {
+  margin: 0 0 20px;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* ---------- Form (stacked on phones) ---------- */
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font: inherit;
+  color: var(--text);
+  background: #fff;
+}
+
+.task-input::placeholder {
+  color: #6b7280;
+}
+
+.btn {
+  min-height: 48px; /* easy to tap */
+  padding: 0 18px;
+  border: 0;
+  border-radius: var(--radius);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn-add {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-add:hover {
+  background: var(--primary-hover);
+}
+
+.btn-delete {
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 0 14px;
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.btn-delete:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+/* ---------- Focus states ---------- */
+.task-input:hover {
+  border-color: #9aa5b8;
+}
+
+.task-input:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid #f2a900;
+  outline-offset: 2px;
+}
+
+.task-input:focus {
+  border-color: var(--primary);
+}
+
+/* ---------- Messages ---------- */
+.error-message {
+  margin: 10px 0 0;
+  color: var(--danger);
+  font-size: 0.9375rem;
+}
+
+.task-count {
+  margin: 20px 0 10px;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+/* ---------- Task list ---------- */
+.task-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 10px 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fafbfd;
+}
+
+.task-text {
+  flex: 1;
+  min-width: 0; /* lets long text wrap instead of overflowing */
+  overflow-wrap: anywhere;
+}
+
+.empty-state {
+  margin: 8px 0 0;
+  padding: 24px 12px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- Helpers ---------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ---------- Tablet and up ---------- */
+@media (min-width: 600px) {
+  body {
+    padding: 32px;
+  }
+
+  .app {
+    margin-top: 40px;
+    padding: 32px;
+  }
+
+  .app-title {
+    font-size: 1.875rem;
+  }
+
+  /* input and button sit side by side */
+  .task-form {
+    flex-direction: row;
+  }
+
+  .task-input {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .btn-add {
+    flex-shrink: 0;
+  }
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 1024px) {
+  .app {
+    margin-top: 72px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
